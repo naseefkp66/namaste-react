@@ -1,5 +1,0 @@
-const root = ReactDOM.createRoot(document.getElementById("root"))
-const heading = React.createElement("h1",{},"Hello React heading1")
-const heading2 = React.createElement("h1",{},"Hello React heading2")
-const div = React.createElement("div",{id:"nasf-id",style:{color:"blue",backgroundColor:"yellow"}},[heading,heading2])
-root.render(div)

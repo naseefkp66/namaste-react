@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import ShimmerCards from './shimmerCard'
 import { SWIGGY_LIST_RESTAURANTS_API } from "../utils/constant"
 import { Link } from "react-router-dom"
+import useOnlineStatus from "../utils/useOnlineStatus"
 
 const Body = () => {
     const [filteredRestaurants, setFilteredRestaurants] = useState([])
@@ -27,6 +28,12 @@ const Body = () => {
             setFilteredRestaurants(listOfRestaurants)
         }
     }, [searchQuery])
+
+    const onlineStatus = useOnlineStatus()
+
+    if(!onlineStatus){
+        return <h1>Looks like you are offline,Please check your internet connection</h1>
+    }
     return <> <div className="filter">
         <input value={searchQuery} onChange={(e) => { setSearchQuery(e.target.value) }} /><button onClick={() => { searchFn() }}>Search</button>
         <button className="filter-btn" onClick={() => {

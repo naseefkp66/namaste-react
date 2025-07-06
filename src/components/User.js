@@ -15,7 +15,7 @@ const User = () =>{
     
     const  {name,location,avatar_url} = userInfo
 
-    return(<div className="user-card">
+    return(<div className="p-4 m-4 border-solid border-2 w-80">
     <img src={avatar_url}/>
     <h2>Name : {name}</h2>
     <h3>Place : {location}</h3>

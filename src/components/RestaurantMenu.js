@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import ShimmerCards from './shimmerCard'
+import ShimmerCards from './ShimmerCards'
 import useRestaurantMenu from '../utils/useRestaurantMenu'
 
 const RestaurantMenu = () => {

@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard"
+import RestaurantCard,{withPromotedLabel} from "./RestaurantCard"
 import { useEffect, useState } from "react"
 import ShimmerCards from './ShimmerCards'
 import { SWIGGY_LIST_RESTAURANTS_API } from "../utils/constant"
@@ -30,7 +30,7 @@ const Body = () => {
     }, [searchQuery])
 
     const onlineStatus = useOnlineStatus()
-
+const RestaurantCardPromoted = withPromotedLabel(RestaurantCard)
     if(!onlineStatus){
         return <h1>Looks like you are offline,Please check your internet connection</h1>
     }
@@ -43,8 +43,8 @@ const Body = () => {
     </div>{listOfRestaurants.length === 0 ? (<ShimmerCards />) : (
         <div className="">
             <div className="flex gap-2 flex-wrap">
-                {filteredRestaurants.map((item) => (<Link  key={item.info.id} to={"/restaurants/"+item.info.id}>    
-                   <RestaurantCard resData={item} /></Link>
+                {filteredRestaurants?.map((item) => (<Link  key={item.info.id} to={"/restaurants/"+item.info.id}>    
+                <RestaurantCardPromoted resData={item}/></Link>
                     
                 ))}
             </div>

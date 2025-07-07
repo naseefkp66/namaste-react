@@ -10,7 +10,6 @@ const RestaurantMenu = () => {
     const resInfo = useRestaurantMenu(resId)
     if (!resInfo) { return (<ShimmerCards />) }
     let filteredData = resInfo?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((item) => item?.card?.card?.['@type'] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
-    console.log('resInfo',resInfo);
     const { name, cuisines, costForTwoMessage } = resInfo?.data?.cards[2]?.card?.card?.info
     if(!filteredData){return}
     return (

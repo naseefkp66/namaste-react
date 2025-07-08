@@ -1,7 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Item from './Item';
-import { useDispatch } from 'react-redux';
 import { clearCart, removeItem } from '../utils/cartSlice';
 
 

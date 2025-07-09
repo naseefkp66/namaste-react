@@ -1,4 +1,4 @@
-import RestaurantCard,{withPromotedLabel} from "./RestaurantCard"
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard"
 import { useEffect, useState } from "react"
 import ShimmerCards from './ShimmerCards'
 import { SWIGGY_LIST_RESTAURANTS_API } from "../utils/constant"
@@ -30,22 +30,22 @@ const Body = () => {
     }, [searchQuery])
 
     const onlineStatus = useOnlineStatus()
-const RestaurantCardPromoted = withPromotedLabel(RestaurantCard)
-    if(!onlineStatus){
+    const RestaurantCardPromoted = withPromotedLabel(RestaurantCard)
+    if (!onlineStatus) {
         return <h1>Looks like you are offline,Please check your internet connection</h1>
     }
     return <> <div className="px-4 m-4">
-        <input className=" border-black border-solid border-2" value={searchQuery} onChange={(e) => { setSearchQuery(e.target.value) }} /><button className="px-4 py-2 m-4 bg-green-100 rounded-lg" onClick={() => { searchFn() }}>Search</button>
-       
-       <button className="px-4 py-2 bg-gray-100 rounded-lg" onClick={() => {
+        <input data-testid="searchInput" c className=" border-black border-solid border-2" value={searchQuery} onChange={(e) => { setSearchQuery(e.target.value) }} /><button lassName="px-4 py-2 m-4 bg-green-100 rounded-lg" onClick={() => { searchFn() }}>Search</button>
+
+        <button className="px-4 py-2 bg-gray-100 rounded-lg" onClick={() => {
             setFilteredRestaurants(prev => prev.filter((res) => res.info.avgRating > 4.5))
         }}>Top rated Restaurants</button>
     </div>{listOfRestaurants.length === 0 ? (<ShimmerCards />) : (
         <div className="">
             <div className="flex gap-2 flex-wrap">
-                {filteredRestaurants?.map((item) => (<Link  key={item.info.id} to={"/restaurants/"+item.info.id}>    
-                <RestaurantCardPromoted resData={item}/></Link>
-                    
+                {filteredRestaurants?.map((item) => (<Link key={item.info.id} to={"/restaurants/" + item.info.id}>
+                    <RestaurantCardPromoted resData={item} /></Link>
+
                 ))}
             </div>
         </div>

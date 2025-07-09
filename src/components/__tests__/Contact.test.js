@@ -5,6 +5,23 @@ import "@testing-library/jest-dom"
 
 
 describe('contact us page test case', () => {
+  beforeAll(() => {
+    console.log("beforeAll")
+  })
+
+  afterAll(() => {
+    console.log("afterAll")
+  })
+
+  beforeEach(() => {
+    console.log("beforeEach")
+
+  })
+  beforeAll(() => {
+    console.log("beforeAll")
+
+  })
+
   test('should load contact us page', () => {
     render(<Contact />)
     const heading = screen.getByRole("heading")
